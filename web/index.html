@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выплаты</title>
+
+    <link rel="stylesheet" href="style/style.css">
+    <script type="text/javascript" src="/eel.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="module" src="js/main.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="nav-button">
+            <div class="nav" id="file_button">Файл</div>
+            <ul class="nav-list">
+                <li id="upload_button">Загрузить</li>
+                <li>Отправить</li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <div class="nav" id="file_button">Редактирование</div>
+            <ul class="nav-list">
+                <li>Добавить Записи</li>
+                <li>Вывести ошибки</li>
+            </ul>
+        </div>
+        <div class="nav-button">
+            <div class="nav" id="file_button">Отчеты</div>
+        </div>
+        <div class="nav-button">
+            <div class="nav" id="file_button">Программа</div>
+            <ul class="nav-list">
+                <li>Настройки</li>
+                <li>Обновление</li>
+                <li>Синхронизировать БД</li>
+                <li>О программе</li>
+            </ul>
+        </div>
+    </header>
+    <div class="content">
+        <table>
+            <colgroup>
+                <col width="40"> <!--id-->
+                <col width="150"> <!--Фамилия-->
+                <col width="150"> <!--Имя-->
+                <col width="150"> <!--Отчество-->
+                <col> <!--Номер счёта-->
+                <col width="100"> <!--Сумма-->
+                <col width="50"> <!--Номер паспорта-->
+                <col width="100"> <!--Дата рожд-->
+                <col width="0"> <!---->
+                <col width="140"> <!--СНИЛС-->
+            </colgroup>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Номер счёта</th>
+                    <th>Сумма</th>
+                    <th>Номер паспорта</th>
+                    <th>Дата рожд</th>
+                    <th></th>
+                    <th>СНИЛС</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <div id="elements">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <div><input type="text" name="id" disabled></div>
+                    </td>
+                    <td>
+                        <div><input type="text" name="fam"></div>
+                    </td>
+                    <td>
+                        <div><input type="text" name="ima"></div>
+                    </td>
+                    <td>
+                        <div><input type="text" name="otch"></div>
+                    </td>
+                    <td>
+                        <div><input type="text" name="accord"></div>
+                    </td>
+                    <td>
+                        <div><input type="number" name="summ"></div>
+                    </td>
+                    <td>
+                        <div><input type="text" name="pasp"></div>
+                    </td>
+                    <td>
+                        <div><input type="text" name="date"></div>
+                    </td>
+                    <td>
+                        <div><input type="text"></div>
+                    </td>
+                    <td>
+                        <div><input type="text" name="snils"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
