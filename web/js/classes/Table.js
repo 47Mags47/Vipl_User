@@ -27,7 +27,7 @@ export default class Table {
     validate() {
         let errors = []
         $.each(this.rows, function (i, row) {
-            if(row.validate().length > 0){
+            if (row.validate().length > 0) {
                 errors.push(row.validate())
             }
         });
@@ -35,9 +35,9 @@ export default class Table {
         return errors
     }
 
-    getData(){
-        if(this.validate().length > 0){
-            return false 
+    getData() {
+        if (this.validate().length > 0) {
+            return false
         }
 
         let data = []
@@ -48,21 +48,18 @@ export default class Table {
         return data
     }
 
-    saveTMP(){
+    saveTMP() {
         let data = this.getData()
         if (data) {
             eel.saveFile_py(data)()
         } else {
+            alert('Необходимо исправить ошибки')
             return
         }
     }
 
-    saveFile(){
+    saveFile() {
         let data = this.getData()
-        if (data) {
-            eel.saveFile_py(data, true)()
-        } else {
-            return
-        }
+        eel.saveFile_py(data, true)()
     }
 }
