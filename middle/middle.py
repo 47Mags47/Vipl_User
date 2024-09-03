@@ -1,8 +1,10 @@
+# // Этот файл отвечает за связь front-end и back-end частей приложения
+# // Функции в данном файле доступны в JS и выполняются на back-end
+
 import eel
 
-from back.DB import DB
-DB = DB()
-validations = DB.getValidation()
+from back.classes.DB import DB
+db = DB()
 
 from back.upload import upload
 from back.readpage import readpage
@@ -14,7 +16,7 @@ def upload_py():
 
 @eel.expose
 def getValidations():
-    return validations
+    return db.getValidation()
 
 @eel.expose
 def readpage_py(name):

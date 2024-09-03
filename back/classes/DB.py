@@ -1,3 +1,7 @@
+# // Класс DB Отвечает за запросы к БД сервера
+
+# * Метод getValidation возвращает словарь словарей с правилами проверки полей
+
 from mysql.connector import connect, Error
 from dotenv import dotenv_values
 config = dotenv_values('.env')
@@ -13,21 +17,14 @@ class DB():
             )
             self.cursor = self.connect.cursor()
         except Error as e:
-            print(e)
+            return
     def close(self):
         self.cursor.close()
         self.connect.close()
         
     def execute(self, sql):
         self.cursor.execute(sql)
-        
-        results = {}
-        for row in self.cursor.fetchall():
-            if(row[0] not in results):
-                results[row[0]] = {}
-            if(row[1] not in results[row[0]]):
-                results[row[0]][row[1]] = row[3]
-        return results
+        return self.cursor.fetchall()
         
     def getValidation(self):
         sql = '''
@@ -40,7 +37,15 @@ class DB():
             INNER JOIN `glossary__validate_pole` ON `glossary__validate_pole`.`id` = `main__validate`.`pole`
             INNER JOIN `glossary__validate_type` ON `glossary__validate_type`.`id` = `main__validate`.`type`
         '''
-        return self.execute(sql)
+        data = self.execute(sql)
+    
+        results = {}
+        for row in data:
+            if(row[0] not in results):
+                results[row[0]] = {}
+            if(row[1] not in results[row[0]]):
+                results[row[0]][row[1]] = row[3]
+        return results
     
 if __name__ == '__main__':
     test = DB()

@@ -1,4 +1,4 @@
-import Table from './classes/Table.js'
+// import Table from './classes/Table.js'
 
 export function load() {
     /* Элементы меню */
@@ -24,6 +24,7 @@ export function load() {
             await window.pages.upload.view()
             window.table = new Table(data)
             window.table.render()
+            window.table.validate()
         } catch (error) {
             alert('Во время выполнения операции произошла ошибка')
         }

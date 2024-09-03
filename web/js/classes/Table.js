@@ -1,21 +1,13 @@
 import Row from '/js/classes/Row.js'
 
 export default class Table {
-    rows = [];
-    cells = [];
-
     constructor(data) {
         this.data = data
+        this.rows = []
 
-        let this_class = this;
-        $.each(this_class.data, function (i, element) {
-            let row = new Row(element)
-
-            this_class.rows.push(row)
-            this_class.cells.push(row.cells)
+        this.data.forEach(row => {
+            this.rows.push(new Row(row))
         });
-
-        this.validate()
     }
 
     render() {
@@ -26,6 +18,7 @@ export default class Table {
 
     validate() {
         let errors = []
+        
         $.each(this.rows, function (i, row) {
             if (row.validate().length > 0) {
                 errors.push(row.validate())
