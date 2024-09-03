@@ -1,6 +1,6 @@
 import Row from '/js/classes/Row.js'
 
-export default class Sheet {
+export default class Table {
     rows = [];
     cells = [];
 
@@ -15,7 +15,6 @@ export default class Sheet {
             this_class.cells.push(row.cells)
         });
 
-        this.code = this.render()
         this.validate()
     }
 
@@ -32,5 +31,38 @@ export default class Sheet {
                 errors.push(row.validate())
             }
         });
+
+        return errors
+    }
+
+    getData(){
+        if(this.validate().length > 0){
+            return false 
+        }
+
+        let data = []
+        $.each(this.rows, function (i, row) {
+            data.push(row.getData())
+        });
+
+        return data
+    }
+
+    saveTMP(){
+        let data = this.getData()
+        if (data) {
+            eel.saveFile_py(data)()
+        } else {
+            return
+        }
+    }
+
+    saveFile(){
+        let data = this.getData()
+        if (data) {
+            eel.saveFile_py(data, true)()
+        } else {
+            return
+        }
     }
 }

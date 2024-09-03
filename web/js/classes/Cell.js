@@ -72,4 +72,8 @@ export default class Cell {
 
         return errors
     }
+
+    getValue(){
+        return this.code.find('input').val()
+    }
 }

@@ -1,4 +1,4 @@
-import Sheet from './classes/Sheet.js'
+import Table from './classes/Table.js'
 
 export function load() {
     /* Элементы меню */
@@ -19,7 +19,21 @@ export function load() {
 
     /* Действия */
     $('#upload_button').on('click', async function () {
-        let data = await eel.upload_py()()
-        window.Sheet = new Sheet(data)
+        try {
+            let data = await eel.upload_py()()
+            await window.pages.upload.view()
+            window.table = new Table(data)
+            window.table.render()
+        } catch (error) {
+            alert('Во время выполнения операции произошла ошибка')
+        }
+    })
+
+    $('#send_button').on('click', function () {
+        window.table.saveTMP()
+    })
+
+    $('#save_button').on('click', function () {
+        window.table.saveFile()
     })
 }
